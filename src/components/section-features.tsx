@@ -52,7 +52,7 @@ export function SectionFeatures() {
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8">
+      <div className="relative z-10 mx-auto max-w-5xl px-6 md:px-8">
         <div className="text-center">
           <h2 className="text-[24px] md:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
             Powerful features for modern campaigns

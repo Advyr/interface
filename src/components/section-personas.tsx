@@ -77,7 +77,7 @@ export function SectionPersonas() {
             projects building on{" "}
             <span className="inline-flex items-center gap-2">
               <Image
-                src="/Image/Logo/base-logo.jpg"
+                src="/Image/Logo/base-logo.png"
                 alt="Base logo"
                 width={40}
                 height={40}
@@ -132,7 +132,7 @@ export function SectionPersonas() {
             results on{" "}
             <span className="inline-flex items-center gap-1">
               <Image
-                src="/Image/Logo/base-logo.jpg"
+                src="/Image/Logo/base-logo.png"
                 alt="Base logo"
                 width={20}
                 height={20}

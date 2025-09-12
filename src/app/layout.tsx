@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Advyr - Onchain Ads + AI",
+  title: "Advyr",
   description:
     "Run CPA campaigns on Base with AI chat, RAG placement, and trustless payouts.",
 };
