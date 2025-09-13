@@ -14,7 +14,7 @@ import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Bot, Plus, Settings, Trash2, X } from "lucide-react";
+import { Bot, Plus, Settings, Trash2, X, DollarSign } from "lucide-react";
 
 const personalizationSchema = z.object({
   brandVoice: z.enum(["professional", "friendly", "degen", "formal"]),
@@ -27,8 +27,9 @@ const personalizationSchema = z.object({
   hashtags: z.array(z.string()),
   disallowedTerms: z.array(z.string()),
   complianceNotes: z.string(),
-  dailyEth: z.number().min(0.01, "Daily budget must be at least 0.01 ETH"),
-  totalEth: z.number().min(0.1, "Total budget must be at least 0.1 ETH")
+  budgetToken: z.string().min(1, "Please select a budget token"),
+  dailyBudget: z.number().min(0.01, "Daily budget must be at least 0.01"),
+  totalBudget: z.number().min(0.1, "Total budget must be at least 0.1")
 });
 
 type PersonalizationFormData = z.infer<typeof personalizationSchema>;
@@ -46,6 +47,30 @@ const channelOptions = [
 
 const languageOptions = [
   "English", "Spanish", "French", "German", "Japanese", "Korean", "Chinese", "Portuguese"
+];
+
+const budgetTokens = [
+  {
+    id: "USDC",
+    name: "USDC",
+    symbol: "USDC",
+    icon: "$",
+    description: "USD Coin"
+  },
+  {
+    id: "IDRX",
+    name: "IDRX", 
+    symbol: "IDRX",
+    icon: "₹",
+    description: "Indonesian Rupiah X"
+  },
+  {
+    id: "ETH",
+    name: "ETH",
+    symbol: "ETH",
+    icon: "⟠", 
+    description: "Ethereum"
+  }
 ];
 
 export default function AgentsPage() {
@@ -66,8 +91,9 @@ export default function AgentsPage() {
       hashtags: [],
       disallowedTerms: [],
       complianceNotes: "",
-      dailyEth: 0.1,
-      totalEth: 1.0
+      budgetToken: "USDC",
+      dailyBudget: 100,
+      totalBudget: 1000
     }
   });
 
@@ -377,31 +403,83 @@ export default function AgentsPage() {
                 {/* Budget Caps */}
                 <div className="space-y-4">
                   <Label className="text-sm font-medium">Budget Caps</Label>
+                  
+                  {/* Budget Token Selection */}
+                  <div>
+                    <Label className="text-sm font-medium mb-2 block">Budget Token</Label>
+                    <Controller
+                      name="budgetToken"
+                      control={control}
+                      render={({ field }) => (
+                        <div className="grid grid-cols-3 gap-3">
+                          {budgetTokens.map((token) => (
+                            <button
+                              key={token.id}
+                              type="button"
+                              onClick={() => field.onChange(token.id)}
+                              className={`flex items-center space-x-2 p-3 rounded-lg border-2 transition-all ${
+                                field.value === token.id
+                                  ? "border-blue-500 bg-blue-50 text-blue-700"
+                                  : "border-gray-200 bg-white text-gray-700 hover:border-gray-300"
+                              }`}
+                            >
+                              <span className="text-lg">{token.icon}</span>
+                              <div className="text-left">
+                                <p className="font-medium text-xs">{token.symbol}</p>
+                                <p className="text-xs opacity-70">{token.name}</p>
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    />
+                    {errors.budgetToken && (
+                      <p className="text-sm text-red-600">{errors.budgetToken.message}</p>
+                    )}
+                  </div>
+
+                  {/* Budget Amounts */}
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="dailyEth" className="text-sm">Daily ETH</Label>
-                      <Input
-                        id="dailyEth"
-                        type="number"
-                        step="0.01"
-                        {...register("dailyEth", { valueAsNumber: true })}
-                        placeholder="0.1"
-                      />
-                      {errors.dailyEth && (
-                        <p className="text-sm text-red-600">{errors.dailyEth.message}</p>
+                      <Label htmlFor="dailyBudget" className="text-sm">Daily Budget</Label>
+                      <div className="relative mt-1">
+                        <Input
+                          id="dailyBudget"
+                          type="number"
+                          step="0.01"
+                          {...register("dailyBudget", { valueAsNumber: true })}
+                          placeholder={watchedValues.budgetToken === "IDRX" ? "100000" : "100"}
+                          className="pr-16"
+                        />
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+                          <span className="text-gray-500 text-sm font-medium">
+                            {budgetTokens.find(t => t.id === watchedValues.budgetToken)?.symbol}
+                          </span>
+                        </div>
+                      </div>
+                      {errors.dailyBudget && (
+                        <p className="text-sm text-red-600">{errors.dailyBudget.message}</p>
                       )}
                     </div>
                     <div>
-                      <Label htmlFor="totalEth" className="text-sm">Total ETH</Label>
-                      <Input
-                        id="totalEth"
-                        type="number"
-                        step="0.1"
-                        {...register("totalEth", { valueAsNumber: true })}
-                        placeholder="1.0"
-                      />
-                      {errors.totalEth && (
-                        <p className="text-sm text-red-600">{errors.totalEth.message}</p>
+                      <Label htmlFor="totalBudget" className="text-sm">Total Budget</Label>
+                      <div className="relative mt-1">
+                        <Input
+                          id="totalBudget"
+                          type="number"
+                          step="0.1"
+                          {...register("totalBudget", { valueAsNumber: true })}
+                          placeholder={watchedValues.budgetToken === "IDRX" ? "1000000" : "1000"}
+                          className="pr-16"
+                        />
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+                          <span className="text-gray-500 text-sm font-medium">
+                            {budgetTokens.find(t => t.id === watchedValues.budgetToken)?.symbol}
+                          </span>
+                        </div>
+                      </div>
+                      {errors.totalBudget && (
+                        <p className="text-sm text-red-600">{errors.totalBudget.message}</p>
                       )}
                     </div>
                   </div>

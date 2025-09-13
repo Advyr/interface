@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Home, Megaphone, Users, Gift, Bot, Settings, X } from "lucide-react";
+import { Home, Megaphone, Users, Gift, Bot, Settings, X, Award, Shield } from "lucide-react";
 import { useUiStore } from "@/stores/uiStore";
 
 const navigation = [
@@ -13,6 +13,8 @@ const navigation = [
   { name: "Ads", href: "/ads", icon: Megaphone },
   { name: "Publishers", href: "/publishers", icon: Users },
   { name: "Referrals", href: "/referrals", icon: Gift },
+  { name: "Rewards", href: "/rewards", icon: Award },
+  { name: "CPA Verification", href: "/cpa-verification", icon: Shield },
   { name: "Settings", href: "/settings", icon: Settings },
 ];
 

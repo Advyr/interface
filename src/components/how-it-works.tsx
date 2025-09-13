@@ -1,78 +1,104 @@
 "use client";
 
-export default function OnchainFlow() {
-  const steps = [
-    {
-      number: "01",
-      title: "Create Campaign",
-      description:
-        "Set your budget, target audience, and campaign objectives with our intuitive interface.",
-    },
-    {
-      number: "02",
-      title: "Display on Publishers",
-      description:
-        "Your ads go live across our verified publisher network automatically, ensuring maximum reach.",
-    },
-    {
-      number: "03",
-      title: "User Action Verified",
-      description:
-        "Smart contracts verify genuine user actions and conversions onchain, providing trustless transparency.",
-    },
-    {
-      number: "04",
-      title: "Auto Payout & Insights",
-      description:
-        "Payments are released automatically with detailed performance analytics for campaign optimization.",
-    },
-  ];
+import Image from "next/image";
 
+export default function HowItWorks() {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50/50 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">
-            Onchain Flow
-          </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Launch your campaign in minutes with our streamlined onchain process
-          </p>
-        </div>
-
-        {/* Steps */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 relative">
-          {steps.map((step, index) => (
-            <div key={index} className="relative text-center">
-              <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-4 shadow-lg">
-                {step.number}
-              </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">
-                {step.title}
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                {step.description}
-              </p>
-
-              {/* wave connector */}
-              {index < steps.length - 1 && (
-                <svg
-                  className="hidden lg:block absolute top-8 left-1/2 w-full h-16 text-blue-300 -z-10"
-                  viewBox="0 0 200 50"
-                  fill="none"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M0 25 C50 0, 150 50, 200 25"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              )}
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50 relative overflow-hidden">
+      <div className="max-w-4xl mx-auto relative z-10">
+        {/* Header */}
+        <div className="text-center mb-20">
+          <div className="flex items-center justify-center space-x-4 mb-12">
+            <div className="w-16 h-16 relative">
+              <Image
+                src="/Image/Logo/advyr-top.png"
+                alt="Base Logo"
+                width={64}
+                height={64}
+                className="object-contain"
+              />
             </div>
-          ))}
+            <div className="w-px h-16 bg-gray-200"></div>
+            <h2 className="text-4xl font-bold text-gray-900">
+              Community-First Advertising
+            </h2>
+          </div>
+
+          <div className="max-w-4xl mx-auto space-y-8">
+            <p className="text-xl text-gray-700 font-medium leading-relaxed">
+              We believe in ads that belong to the community.
+            </p>
+            <div className="relative text-5xl text-blue-600 font-bold leading-tight">
+              On Base, visibility is limitless—because Base is for <br />
+              <span className="relative inline-block text-4xl">
+                everyone
+                <div className="absolute inset-0 -m-3">
+                  <svg viewBox="0 0 200 60" className="w-full h-full">
+                    <ellipse
+                      cx="100"
+                      cy="30"
+                      rx="95"
+                      ry="25"
+                      fill="none"
+                      stroke="#2563eb"
+                      strokeWidth="3"
+                      strokeDasharray="0"
+                      opacity="0.6"
+                    />
+                    <ellipse
+                      cx="100"
+                      cy="30"
+                      rx="90"
+                      ry="22"
+                      fill="none"
+                      stroke="#2563eb"
+                      strokeWidth="2"
+                      strokeDasharray="0"
+                      opacity="0.4"
+                    />
+                    <ellipse
+                      cx="100"
+                      cy="30"
+                      rx="100"
+                      ry="28"
+                      fill="none"
+                      stroke="#2563eb"
+                      strokeWidth="2"
+                      strokeDasharray="0"
+                      opacity="0.5"
+                    />
+                  </svg>
+                </div>
+              </span>
+              .
+            </div>
+          </div>
         </div>
+
+        {/* Call to Action */}
+        <div className="text-center">
+          <div className="inline-flex items-center space-x-3 px-8 py-4 bg-white border-2 border-blue-600 text-blue-600 rounded-2xl shadow-sm hover:shadow-md hover:bg-blue-50 transition-all duration-300">
+            <div className="w-8 h-8 relative">
+              <Image
+                src="/Image/Logo/base-logo.png"
+                alt="Base Logo"
+                width={32}
+                height={32}
+                className="object-contain"
+              />
+            </div>
+            <span className="text-lg font-medium">
+              Built on Base, Made for Everyone
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-100 rounded-full opacity-20"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-100 rounded-full opacity-20"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-50 to-purple-50 rounded-full opacity-30"></div>
       </div>
     </section>
   );

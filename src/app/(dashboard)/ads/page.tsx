@@ -19,6 +19,7 @@ type CampaignFormData = {
   budgetLocked: number;
   duration: number;
   aiAgent: string;
+  paymentToken: string;
 };
 
 export default function AdsPage() {
@@ -26,7 +27,6 @@ export default function AdsPage() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [onchainDialogOpen, setOnchainDialogOpen] = useState(false);
   const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(null);
-  const [isDeploying, setIsDeploying] = useState(false);
   
   // Mock AI Agents data
   const availableAgents = [

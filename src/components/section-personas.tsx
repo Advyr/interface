@@ -113,7 +113,7 @@ export function SectionPersonas() {
         </div>
 
         <div className="mt-16 flex flex-col items-center">
-          <div className="flex items-center gap-4 mb-8">
+          {/* <div className="flex items-center gap-4 mb-8">
             <Image
               src="/Image/Logo/advyr.png"
               alt="Advyr Logo"
@@ -124,7 +124,7 @@ export function SectionPersonas() {
             <span className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">
               Powered by Advyr
             </span>
-          </div>
+          </div> */}
 
           <p className="text-center text-slate-600 dark:text-slate-300 max-w-3xl mb-10 text-lg flex items-center justify-center flex-wrap gap-2">
             Join the ecosystem of projects using Advyr to reach their target
