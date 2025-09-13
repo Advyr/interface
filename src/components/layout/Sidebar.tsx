@@ -4,17 +4,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Home, Megaphone, Users, Gift, Bot, Settings, X, Award, Shield } from "lucide-react";
+import { Home, Megaphone, Users, Gift, Bot, Settings, X, BarChart3, Shield, Wallet } from "lucide-react";
 import { useUiStore } from "@/stores/uiStore";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: Home },
   { name: "Agents", href: "/agents", icon: Bot },
-  { name: "Ads", href: "/ads", icon: Megaphone },
-  { name: "Publishers", href: "/publishers", icon: Users },
+  { name: "Create Ads", href: "/ads", icon: Megaphone },
   { name: "Referrals", href: "/referrals", icon: Gift },
-  { name: "Rewards", href: "/rewards", icon: Award },
+  { name: "Analytics & Insights", href: "/analytics-insights", icon: BarChart3 },
   { name: "CPA Verification", href: "/cpa-verification", icon: Shield },
+  { name: "Finance & Escrow", href: "/finance-escrow", icon: Wallet },
   { name: "Settings", href: "/settings", icon: Settings },
 ];
 

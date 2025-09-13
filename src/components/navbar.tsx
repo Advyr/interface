@@ -20,8 +20,8 @@ export default function Navbar() {
             <Link href="#advertiser" className="text-slate-700 hover:text-slate-900 transition-colors">
               Advertiser
             </Link>
-            <Link href="#publishers" className="text-slate-700 hover:text-slate-900 transition-colors">
-              Publishers
+            <Link href="#community" className="text-slate-700 hover:text-slate-900 transition-colors">
+              Community
             </Link>
             <Link href="#docs" className="text-slate-700 hover:text-slate-900 transition-colors">
               Docs

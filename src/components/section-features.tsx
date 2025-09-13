@@ -1,101 +1,97 @@
 "use client";
 import Image from "next/image";
-
-const palette: Record<string, string> = {
-  "/Image/Background/bg-1.png": "59,130,246",
-  "/Image/Background/bg-2.png": "14,165,233",
-  "/Image/Background/bg-3.png": "99,102,241",
-  "/Image/Background/bg-4.png": "56,189,248",
-};
+import { X, Check } from "lucide-react";
 
 export function SectionFeatures() {
-  const items = [
-    {
-      title: "CPA Escrow",
-      desc: "Only pay when verified actions occur, secured on-chain with smart contracts.",
-      img: "/Image/Background/bg-1.png",
-      size: "md:col-span-6 lg:col-span-7 lg:row-span-1",
-      minH: "min-h-[180px]",
-    },
-    {
-      title: "Onchain Verification",
-      desc: "Transparent, trustless verification of clicks, signups, and conversions. Every interaction is recorded directly on-chain, ensuring advertisers only pay for genuine user actions while eliminating fraud and intermediaries.",
-      img: "/Image/Background/bg-2.png",
-      size: "md:col-span-6 lg:col-span-5",
-      minH: "min-h-[180px]",
-    },
-    {
-      title: "AI Chat Answers",
-      desc: "AI agents that answer questions instantly, educate users, and boost conversions. Integrated with real-time data and product knowledge, these agents reduce drop-offs, guide customers seamlessly, and drive higher engagement across campaigns.",
-      img: "/Image/Background/bg-3.png",
-      size: "md:col-span-6 lg:col-span-5",
-      minH: "min-h-[180px]",
-    },
-    {
-      title: "Performance Analytics",
-      desc: "Track campaign impact with real-time dashboards and actionable insights.",
-      img: "/Image/Background/bg-4.png",
-      size: "md:col-span-6 lg:col-span-7",
-      minH: "min-h-[180px]",
-    },
+  const traditionalProblems = [
+    "Pay per click, not per action",
+    "No blockchain transparency",
+    "High fraud & bot activity",
+    "Manual reconciliation & exports",
+    "Centralized intermediaries",
+    "Generic targeting, ignores Web3 context",
+    "No reward for users/community",
+    "Limited trust & accountability",
+  ];
+
+  const advyrSolutions = [
+    "CPA-only → pay only for verified actions",
+    "100% on-chain transparency",
+    "Smart contract escrow & payout automation",
+    "Fraud-resistant with onchain verification",
+    "Community-driven referrals & rewards",
+    "Web3-native targeting & analytics",
+    "Incentivized user engagement",
+    "Scalable, enterprise-ready infrastructure",
   ];
 
   return (
-    <section className="py-12 md:py-20 relative min-h-screen w-full bg-white dark:bg-zinc-950 text-gray-800 dark:text-gray-100">
-      {/* crosshatch bg section */}
-      <div
-        className="absolute inset-0 z-0 pointer-events-none"
-        style={{
-          backgroundImage: `
-            repeating-linear-gradient(22.5deg, transparent, transparent 2px, rgba(75,85,99,.04) 2px, rgba(75,85,99,.04) 3px, transparent 3px, transparent 8px)
-          `,
-        }}
-      />
-
-      <div className="relative z-10 mx-auto max-w-5xl px-6 md:px-8">
-        <div className="text-center">
-          <h2 className="text-[24px] md:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-            Powerful features for modern campaigns
+    <section className="py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Revolutionary On-Chain Advertising
           </h2>
-          <p className="mt-2 text-slate-600 dark:text-slate-300 text-sm md:text-base">
-            Everything you need to run onchain advertising that performs.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Eliminate intermediaries and pay only for verified on-chain actions
+            with full transparency.
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4 [grid-auto-flow:dense]">
-          {items.map((f) => {
-            const glow = palette[f.img] ?? "59,130,246";
-            return (
-              <div
-                key={f.title}
-                className={`relative flex flex-col rounded-2xl border border-slate-200/70 p-4 shadow-sm transition-all duration-300 dark:border-slate-700 ${f.size} ${f.minH}`}
-                style={{
-                  "--glow": glow,
-                  background:
-                    "radial-gradient(120% 120% at 50% 0%, rgba(255,255,255,0.95) 0%, rgba(241,245,249,0.9) 100%)",
-                } as React.CSSProperties}
-              >
-                <div className="relative w-full rounded-xl overflow-hidden bg-slate-100 dark:bg-zinc-800 mb-3">
-                  <div className="relative w-full aspect-[16/7]">
+        <div className="max-w-4xl mx-auto mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 bg-white rounded-3xl p-8 shadow-lg border border-gray-200">
+            <div className="bg-gray-100 rounded-2xl p-6">
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-bold text-gray-900 uppercase tracking-wider">
+                  Web2 Ads
+                </h3>
+              </div>
+              <div className="space-y-4">
+                {traditionalProblems.map((problem, index) => (
+                  <div key={index} className="flex items-start space-x-3">
+                    <div className="w-5 h-5 rounded-full bg-gray-300 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <X className="w-3 h-3 text-gray-600" />
+                    </div>
+                    <span className="text-gray-800 text-sm font-medium leading-relaxed">
+                      {problem}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+
+            <div className="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-6 border border-blue-200">
+              <div className="text-center mb-6">
+                <div className="flex items-center justify-center space-x-3">
+                  <div className="w-8 h-8 relative">
                     <Image
-                      src={f.img}
-                      alt={f.title}
-                      fill
-                      className="object-cover"
+                      src="/Image/Logo/advyr-top.png"
+                      alt="Advyr Logo"
+                      width={32}
+                      height={32}
+                      className="object-contain"
                     />
                   </div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base md:text-lg font-semibold text-slate-900 dark:text-white mb-1">
-                    {f.title}
+                  <h3 className="text-xl font-bold text-blue-600 uppercase tracking-wider">
+                    Advyr
                   </h3>
-                  <p className="text-xs md:text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-                    {f.desc}
-                  </p>
                 </div>
               </div>
-            );
-          })}
+              <div className="space-y-4">
+                {advyrSolutions.map((solution, index) => (
+                  <div key={index} className="flex items-start space-x-3">
+                    <div className="w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check className="w-3 h-3 text-white" />
+                    </div>
+                    <span className="text-gray-800 text-sm font-medium leading-relaxed">
+                      {solution}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
